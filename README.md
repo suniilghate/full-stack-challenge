@@ -25,6 +25,9 @@ Once you've finished and you're confident you have completed the code challenge 
 request with all of your code and reply to the email which asked you to complete the challenge with a link 
 to your pull request. We'll check it over and get back to you with some feedback.
 
+**Part 3 Bonus**
+Comment something positive on someone else's pull request.
+
 ## Setup
 
 1. Clone this repository
