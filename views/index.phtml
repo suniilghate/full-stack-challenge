@@ -1,22 +1,3 @@
-<table>
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Director Name</th>
-            <th>Business Name</th>
-            <th>Business Address</th>
-            <th>Business Registration #</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach($records as $record): ?>
-            <tr>
-                <td><?= $record['id'] ?></td>
-                <td><?= $record['first_name'] . ' ' . $record['last_name'] ?></td>
-                <td><?= $record['name'] ?></td>
-                <td><?= $record['registered_address'] ?></td>
-                <td><?= $record['registration_number'] ?></td>
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+<?php require __DIR__ . '/header.phtml';?>
+<?php require __DIR__ . '/data/' . $requestParam . '.phtml';?>
+<?php require __DIR__ . '/footer.phtml';?>

@@ -4,14 +4,68 @@ namespace Otto;
 
 class Challenge
 {
+    use PdoQueryBuilder;
+
     protected $pdoBuilder;
+    protected $params;
 
     public function __construct()
     {
         $config = require __DIR__ . '/../config/database.config.php';
         $this->setPdoBuilder(new PdoBuilder($config));
+        $this->setPdoObject();
     }
 
+    /**
+     * Use the PDOBuilder to retrieve all the records based on request param
+     *
+     * @return array
+     */
+    public function fetchRecordsAsParam($requestParams) 
+    {
+        $this->params = $requestParams;
+        switch ($requestParams[0]) {
+            case 'records':
+                $recordArr = $this->getRecords();
+                break;
+
+            case 'director':
+                    $recordArr = $this->getDirectorRecords();
+                    break;
+                    
+            case 'single-director':
+                $recordArr = $this->getSingleDirectorRecord();
+                break;
+                
+            case 'business':
+                $recordArr = $this->getBusinessRecords();
+                break;
+                
+            case 'single-business':
+                $recordArr = $this->getSingleBusinessRecord();
+                break;
+                
+            case 'businesses-registered-in-year':
+                $recordArr = $this->getBusinessesRegisteredInYear();
+                break;
+                    
+            case 'last-100':
+                $recordArr = $this->getLast100Records();
+                break;
+                
+            case 'business-name-with-director-fullname':
+                $recordArr = $this->getBusinessNameWithDirectorFullName();
+                break;    
+            
+            default:
+                $recordArr = $this->getRecords();
+                break;
+        }
+        // TODO
+        
+
+        return $recordArr;
+    }
     /**
      * Use the PDOBuilder to retrieve all the records
      *
@@ -20,7 +74,8 @@ class Challenge
     public function getRecords() 
     {
         // TODO
-        return array();
+        $recordArr = $this->fetchRecords();
+        return $recordArr;
     }
 
     /**
@@ -31,7 +86,8 @@ class Challenge
     public function getDirectorRecords() 
     {
         // TODO
-        return array();
+        $recordArr = $this->fetchDirectorRecords();
+        return $recordArr;
     }
 
     /**
@@ -40,10 +96,12 @@ class Challenge
      * @param int $id
      * @return array
      */
-    public function getSingleDirectorRecord($id)
+    public function getSingleDirectorRecord()
     {
         // TODO
-        return array();
+        $id = (!is_null($this->params[1]) || $this->params[1] != "") ? $this->params[1] : '';
+        $recordArr = $this->fetchSingleDirectorRecord($id);
+        return $recordArr;
     }
 
     /**
@@ -54,7 +112,8 @@ class Challenge
     public function getBusinessRecords() 
     {
         // TODO
-        return array();
+        $recordArr = $this->fetchBusinessRecords();
+        return $recordArr;
     }
 
     /**
@@ -63,10 +122,13 @@ class Challenge
      * @param int $id
      * @return array
      */
-    public function getSingleBusinessRecord($id) 
+    public function getSingleBusinessRecord() 
     {
         // TODO
-        return array();
+        $id = (!is_null($this->params[1]) || $this->params[1] != "") ? $this->params[1] : '';
+        $recordArr = $this->fetchSingleBusinessRecord($id);
+
+        return $recordArr;
     }
 
     /**
@@ -75,10 +137,13 @@ class Challenge
      * @param int $year
      * @return array
      */
-    public function getBusinessesRegisteredInYear($year)
+    public function getBusinessesRegisteredInYear()
     {
         // TODO
-        return array();
+        $year = (!is_null($this->params[1]) || $this->params[1] != "") ? $this->params[1] : '';
+        $recordArr = $this->fetchBusinessesRegisteredInYear($year);
+
+        return $recordArr;
     }
 
     /**
@@ -89,7 +154,9 @@ class Challenge
     public function getLast100Records()
     {
         // TODO
-        return array();
+        $recordArr = $this->fetchLast100Records();
+
+        return $recordArr;
     }
 
     /**
@@ -107,7 +174,9 @@ class Challenge
     public function getBusinessNameWithDirectorFullName()
     {
         // TODO
-        return array();
+        $recordArr = $this->fetchBusinessNameWithDirectorFullName();
+
+        return $recordArr;
     }
 
     /**

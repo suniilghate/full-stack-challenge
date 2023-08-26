@@ -1,0 +1,33 @@
+<div class="container">
+    <h1><?php echo ucfirst($requestParam); ?> Listing</h1>
+        
+    <div class="controls">
+        <input type="text" id="searchInput" placeholder="Search...">
+        
+        <?php require __DIR__ . '/../filterdata.phtml';?>
+        
+        <select id="sortSelect">
+            <option value="dname">Director Name</option>
+            <option value="occupation">Occupation</option>
+            <option value="birthdate">BirthDate</option>
+        </select>
+    </div>
+         
+    <table id="productTable" class="product-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Director Name</th>
+                <th>Occupation</th>
+                <th>Birthdate</th>
+            </tr>
+        </thead>
+        <tbody id="productTableBody">
+            <!-- Table rows will be added here dynamically -->
+        </tbody>
+    </table>
+        
+    <div class="pagination" id="pagination">
+        <!-- Pagination links will be added here dynamically -->
+    </div>
+</div>

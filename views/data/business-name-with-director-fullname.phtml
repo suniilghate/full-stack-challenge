@@ -1,0 +1,28 @@
+<div class="container">
+    <h1><?php echo ucfirst($requestParam); ?> Listing</h1>
+        
+    <div class="controls">
+        <input type="text" id="searchInput" placeholder="Search...">
+        
+        <select id="sortSelect">
+            <option value="dname">Business Name</option>
+            <option value="bname">Director Name</option>
+        </select>
+    </div>
+         
+    <table id="productTable" class="product-table">
+        <thead>
+            <tr>
+                <th>Business Name</th>
+                <th>Director Name</th>
+            </tr>
+        </thead>
+        <tbody id="productTableBody">
+            <!-- Table rows will be added here dynamically -->
+        </tbody>
+    </table>
+        
+    <div class="pagination" id="pagination">
+        <!-- Pagination links will be added here dynamically -->
+    </div>
+</div>

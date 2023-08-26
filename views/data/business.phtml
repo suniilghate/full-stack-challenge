@@ -1,0 +1,35 @@
+<div class="container">
+    <h1><?php echo ucfirst($requestParam); ?> Listing</h1>
+        
+    <div class="controls">
+        <input type="text" id="searchInput" placeholder="Search...">
+        
+        <?php //require __DIR__ . '/../filterdata.phtml';?>
+        
+        <select id="sortSelect">
+            <option value="bname">Business Name</option>
+            <option value="baddress">Business Address</option>
+            <option value="bregistration-date">Registration Date</option>
+            <option value="bregistration-no">Registration</option>
+        </select>
+    </div>
+         
+    <table id="productTable" class="product-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Business Name</th>
+                <th>Business Address</th>
+                <th>Business Registration Date</th>
+                <th>Business Registration #</th>
+            </tr>
+        </thead>
+        <tbody id="productTableBody">
+            <!-- Table rows will be added here dynamically -->
+        </tbody>
+    </table>
+        
+    <div class="pagination" id="pagination">
+        <!-- Pagination links will be added here dynamically -->
+    </div>
+</div>

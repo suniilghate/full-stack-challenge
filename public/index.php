@@ -1,9 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+$menuParam = array('records','director','single-director','business','single-business','businesses-registered-in-year','last-100','business-name-with-director-fullname');
 
-$app = new Otto\Challenge();
-$content = null;
+$requestParam = (isset($_GET['fetch']) ? $_GET['fetch'] : 'records');
 
-$records = $app->getRecords();
 include __DIR__ . '/../views/index.phtml';
